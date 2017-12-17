@@ -36,6 +36,9 @@ fi
 fakeroot dpkg -b nextcloud testbed/nextcloud-apache
 fakeroot dpkg -b nextcloud-apache testbed/nextcloud-apache
 
+cp testbed/nextcloud-apache/nextcloud_*_amd64.deb testbed/nextcloud-nginx
+fakeroot dpkg -b nextcloud-nginx testbed/nextcloud-nginx
+
 
 
 docker-compose -f testbed/docker-compose.yml build

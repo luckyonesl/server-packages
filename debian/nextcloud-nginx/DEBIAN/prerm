@@ -1,0 +1,10 @@
+#!/bin/sh
+case "$1" in
+        remove|purge)
+        #not availabe a2dissite nextcloud
+        ;;
+        *)
+        ;;
+esac
+
+exit 0

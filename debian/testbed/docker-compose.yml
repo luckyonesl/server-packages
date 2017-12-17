@@ -18,6 +18,23 @@ services:
          - mysql_password 
          - mysql_user  
          - mysql_db_name
+   nextcloud-nginx:
+      build: 
+         context: nextcloud-nginx
+      ports:
+        - target: 80
+          published: 81
+          protocol: tcp
+          mode: host
+      environment:
+         MYSQL_DATABASE_FILE: /run/secrets/mysql_db_name
+         MYSQL_USER_FILE: /run/secrets/mysql_user
+         MYSQL_PASSWORD_FILE: /run/secrets/mysql_password   
+         MYSQL_HOST: nextclouddb
+      secrets:
+         - mysql_password 
+         - mysql_user  
+         - mysql_db_name
    nextclouddb:
       environment:
          MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
